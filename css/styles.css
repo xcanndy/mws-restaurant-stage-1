@@ -36,6 +36,12 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 	display: block;
 }
 #maincontent {
+  display: grid;
+  grid-template-areas: 
+    "map map map"
+    ". filters .";
+  grid-template-columns: 15% auto 15%;
+  grid-template-rows: auto auto;
   background-color: #f3f3f3;
   min-height: 100%;
 }
@@ -50,6 +56,9 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 }
 /* ====================== Navigation ====================== */
 nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 80px;
   background-color: #252831;
@@ -71,7 +80,8 @@ nav h1 a {
     background-color: #eee;
     font-size: 17px;
     margin: 0;
-    width: calc(50% - 80px);
+    width: 50%;
+    box-sizing: border-box;
 }
 
 /* Display list items side by side */
@@ -98,26 +108,44 @@ nav h1 a {
     text-decoration: underline;
 }
 /* ====================== Map ====================== */
+#map-container {
+  grid-area: map;
+}
 #map {
-  height: 400px;
+  height: 500px;
   width: 100%;
   background-color: #ccc;
 }
 /* ====================== Restaurant Filtering ====================== */
+#filters {
+  grid-area: filters;
+}
 .filter-options {
+  display: grid;
+  grid-template-areas: 
+    "title select-neighbour select-cuisine";
+  grid-template-columns: 25% 30% 30%;
+  justify-items: center;
+  justify-content: center;
+  grid-template-rows: auto;
+  grid-column-gap: 5%;
   width: 100%;
-  height: 50px;
+  height: 60px;
   background-color: #3397DB;
   align-items: center;
 }
 .filter-options h2 {
+  grid-area: title;
+  display: inline;
   color: white;
   font-size: 1rem;
   font-weight: normal;
   line-height: 1;
-  margin: 0 20px;
+  margin: 0 40% 0 0;
+  text-align: left;
 }
 .filter-options select {
+  grid-area: select;
   background-color: white;
   border: 1px solid #fff;
   font-family: Arial,sans-serif;
@@ -126,22 +154,29 @@ nav h1 a {
   letter-spacing: 0;
   margin: 10px;
   padding: 0 10px;
-  width: 200px;
+  width: 100%;
+}
+#neighborhoods-select {
+  grid-area: select-neighbour;
+}
+#cuisines-select {
+  grid-area: select-cuisine;
 }
 
 /* ====================== Restaurant Listing ====================== */
 #restaurants-list {
   background-color: #f3f3f3;
   list-style: outside none none;
-  margin: 0;
+  margin: 0 auto;
   padding: 30px 15px 60px;
   text-align: center;
 }
 #restaurants-list li {
+  display: inline-block;
   background-color: #fff;
   border: 2px solid #ccc;
   font-family: Arial,sans-serif;
-  margin: 15px;
+  margin: 20px 20px 20px;
   min-height: 380px;
   padding: 0 30px 25px;
   text-align: left;
@@ -183,6 +218,18 @@ nav h1 a {
 }
 
 /* ====================== Restaurant Details ====================== */
+.inside {
+  
+}
+.inside #maincontent {
+  display: grid;
+  grid-template-areas: 
+    "restaurant map"
+    "reviews map";
+  grid-template-columns: 45% 50%;
+  grid-column-gap: 5%;
+
+}
 .inside header {
   position: fixed;
   top: 0;
@@ -190,8 +237,9 @@ nav h1 a {
   z-index: 1000;
 }
 .inside #map-container {
+  grid-area: map;
   background: blue none repeat scroll 0 0;
-  height: 87%;
+  height: 100%;
   position: fixed;
   right: 0;
   top: 80px;
@@ -206,25 +254,31 @@ nav h1 a {
   bottom: 0;
   position: absolute;
   width: 50%;
+  box-sizing: border-box;
 }
 #restaurant-name {
+  grid-area: name;
   color: #f18200;
   font-family: Arial,sans-serif;
   font-size: 20pt;
   font-weight: 200;
   letter-spacing: 0;
+  text-align: center;
   margin: 15px 0 30px;
   text-transform: uppercase;
   line-height: 1.1;
 }
 #restaurant-img {
+  grid-area: img;
 	width: 90%;
 }
 #restaurant-address {
+  grid-area: address;
   font-size: 12pt;
   margin: 10px 0px;
 }
 #restaurant-cuisine {
+  grid-area: cuisine;
   background-color: #333;
   color: #ddd;
   font-size: 12pt;
@@ -240,9 +294,21 @@ nav h1 a {
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
   padding: 140px 40px 30px;
-  width: 50%;
+  width: 100%;
+}
+#restaurant-container {
+  grid-area: restaurant;
+  display: grid;
+  grid-template-areas:
+    "name name"
+    "img hours"
+    "cuisine hours"
+    "address hours";
+  grid-template-columns: 45% 50%;
+  grid-column-gap: 5%;
 }
 #reviews-container {
+  grid-area: reviews;
   padding: 30px 40px 80px;
 }
 #reviews-container h2 {
@@ -269,6 +335,9 @@ nav h1 a {
 }
 #reviews-list li p {
   margin: 0 0 10px;
+}
+#restaurant-hours {
+  grid-area: hours;
 }
 #restaurant-hours td {
   color: #666;
