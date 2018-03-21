@@ -178,3 +178,10 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     self.markers.push(marker);
   });
 }
+
+window.setTimeout(() => {
+  document.querySelectorAll('#map iframe').forEach((item) => {
+    item.setAttribute('title', 'Google maps iframe');
+  });
+  DBHelper.removeMapsTabOrder();
+}, 1000);

@@ -167,4 +167,13 @@ class DBHelper {
     return marker;
   }
 
+  /**
+   * Remove map's elements from tab order
+   */
+  static removeMapsTabOrder() {
+    document.querySelectorAll('#map div, #map iframe, #map area, #map a, #map button').forEach((item) => {
+      item.setAttribute('tabindex', '-1');
+    });
+  }
+
 }
