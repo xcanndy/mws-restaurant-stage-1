@@ -56,13 +56,22 @@ self.addEventListener('install', function(event) {
 
 self.addEventListener('fetch', function(event) {
   event.respondWith(
-    caches.match(event.request)
-      .then(function(response) {
-        if (response) {
+    caches.open(appCaches.name).then( cache => {
+      return cache.match(event.request)
+      .then(response => {
+        if(response) {
           return response;
         }
-        return fetch(event.request);
-      }
-    )
-  );
+
+        return fetch(event.request)
+        .then(networkResponse => {
+          cache.put(event.request, networkResponse.clone());
+          return networkResponse;
+        });
+      }).catch(err => {
+        console.log('Error in fetch handler', err);
+        throw err;
+      })
+    })
+  )
 });
