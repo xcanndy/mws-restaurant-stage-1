@@ -67,7 +67,7 @@ self.addEventListener('fetch', function(event) {
         .then(networkResponse => {
           cache.put(event.request, networkResponse.clone());
           return networkResponse;
-        });
+        }); 
       }).catch(err => {
         console.log('Error in fetch handler', err);
         throw err;
