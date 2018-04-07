@@ -1,77 +1,41 @@
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/sw.js').then(function(registration) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').then(registration => {
       // Registration was successful
       console.log('ServiceWorker registration successful with scope: ', registration.scope);
-    }, function(err) {
+    }, err => {
       // registration failed :(
       console.log('ServiceWorker registration failed: ', err);
     });
   });
 }
 
-
-const appCaches = [
-  {
-    name: 'core-001',
-    urls: [
-      '/',
-      '/index.html',
-      '/restaurant.html',
-    ]
-  },
-  {
-    name: 'styles-001',
-    urls: [
-      '/css/styles.css',
-    ]
-  },
-  {
-    name: 'scripts-001',
-    urls: [
-      '/js/main.js',
-      '/js/dbhelper.js',
-      '/js/restaurant_info.js',
-      '/sw.js'
-    ]
-  },
-  {
-    name: 'data-001',
-    urls: [
-      '/data/restaurants.json'
-    ]
-  }
-];
-
-self.addEventListener('install', function(event) {
-  event.waitUntil(Promise.all(
-    appCaches.map( (appCaches) => {
-      return caches.open(appCaches.name)
-        .then( (cache) => {
-          return cache.addAll(appCaches.urls);
-        })
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open('cache-mws').then(cache => {
+      return cache.addAll(
+        [
+          '/img',
+          '/css/styles.css',
+          '/js/dbhelper.js',
+          '/js/main.js',
+          '/data/restaurants.json'
+        ]
+      );
     })
-  ));
+  );
 });
 
-self.addEventListener('fetch', function(event) {
+self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.open(appCaches.name).then( cache => {
-      return cache.match(event.request)
-      .then(response => {
-        if(response) {
-          return response;
-        }
-
-        return fetch(event.request)
-        .then(networkResponse => {
-          cache.put(event.request, networkResponse.clone());
-          return networkResponse;
-        }); 
-      }).catch(err => {
-        console.log('Error in fetch handler', err);
-        throw err;
-      })
+    caches.open('cache-mws').then(cache => {
+      return cache.match(event.request).then(response => {
+        return response || fetch(event.request).then(response => {
+          cache.put(event.request, response.clone());
+            return response;
+        });
+      });
     })
-  )
+  );
 });
+
