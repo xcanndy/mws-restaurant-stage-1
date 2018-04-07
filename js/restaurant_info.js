@@ -61,6 +61,9 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   image.srcset = `${image.src.replace('.jpg', '-200.jpg')} 200w,
                   ${image.src.replace('.jpg', '-400.jpg')} 400w,
                   ${image.src.replace('.jpg', '-600.jpg')} 600w`;
+  image.sizes = `(max-width: 425px) 200px,
+                 (max-width: 768px) 400px,
+                 600px`;
   image.alt = `${restaurant.name} restaurant`;
 
   const cuisine = document.getElementById('restaurant-cuisine');
