@@ -1,0 +1,25 @@
+{
+  "name": "mws-restaurant-stage-1",
+  "version": "1.0.0",
+  "description": "---\r #### _Three Stage Course Material Project - Restaurant Reviews_",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xcanndy/mws-restaurant-stage-1.git"
+  },
+  "author": "xcanndy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xcanndy/mws-restaurant-stage-1/issues"
+  },
+  "homepage": "https://github.com/xcanndy/mws-restaurant-stage-1#readme",
+  "devDependencies": {
+    "grunt": "^1.0.2",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-image-resize": "^1.0.0"
+  }
+}
