@@ -5,28 +5,29 @@ module.exports = function(grunt) {
     image_resize: {
       resize: {
         options: {
-          width: 400,
-          height: 300
+          width: 200,
+          height: 150
         },
         src: 'img/*.jpg',
-        dest: 'img/resized/400/'
+        dest: 'img/copy/'
       },
     },
     // Clean resized images' directory
-    clean: ['img/resized/'],
+    clean: ['img/copy/'],
 
     copy: {
       main: {
         files: [
           {
             expand: true,
-            cwd: 'img/resized/400/',
+            cwd: 'img/copy/',
             src: ['*'],
-            dest: 'img/400/',
-            ext: '-400.jpg'
+            dest: 'img/resized/',
+            ext: '-200.jpg'
           } 
         ]
       }
+     
     },
     
   })
@@ -37,5 +38,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
 
 // Register tasks
-  grunt.registerTask('resize-img', ['clean','image_resize','copy']);
+  grunt.registerTask('resize', ['clean','image_resize','copy','clean']);
 }
