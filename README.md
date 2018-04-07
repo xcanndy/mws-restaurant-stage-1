@@ -2,7 +2,6 @@
 ---
 #### _Restaurant Reviews Project Stage 1_
 ---
-## Live preview:  [Restaurant Reviews Stage 1](https://xcanndy.github.io/mws-restaurant-stage-1/)
 
 ### Project Overview: 
 ##### 1. Responsive Design
