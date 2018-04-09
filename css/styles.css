@@ -40,8 +40,8 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   display: grid;
   grid-template-areas: 
     "map map map"
-    ". filters .";
-  grid-template-columns: 15% auto 15%;
+    "filters filters filters";
+  grid-template-columns: 5% auto 5%;
   grid-template-rows: auto auto;
   background-color: #f3f3f3;
   min-height: 100%;
@@ -175,7 +175,7 @@ nav h1 a {
   background-color: #f3f3f3;
   list-style: outside none none;
   margin: 0 auto;
-  padding: 30px 15px 60px;
+  padding: 30px 0 60px;
   text-align: center;
 }
 #restaurants-list li {
@@ -184,7 +184,7 @@ nav h1 a {
   border: 2px solid #ccc;
   font-family: Arial,sans-serif;
   margin: 20px 20px 20px;
-  height: 500px;
+  min-height: 400px;
   padding: 0 30px 25px;
   text-align: left;
   width: 300px;
@@ -355,23 +355,14 @@ nav h1 a {
 }
 
 /* --------- Media queries --------- */
-
-@media screen and (max-width: 1646px) {
-  #maincontent {
-    grid-template-columns: 10% auto 10%;
-  }
-}
-
 @media screen and (max-width: 1439px) {
   #maincontent {
     grid-template-columns: 5% auto 5%;
   }
 }
-
-@media screen and (max-width: 1279px) {
+@media screen and (max-width: 1166px) {
   #restaurants-list li {
-    width: 300px;
-    height: 480px;
+    width: 250px;
   }
 }
 @media screen and (max-width: 1070px) {
@@ -391,7 +382,11 @@ nav h1 a {
     box-sizing: border-box;
   }
 }
-
+@media screen and (max-width: 988px) {
+  #restaurants-list li {
+    width: 300px;
+  }
+}
 @media screen and (max-width: 980px) {
   #restaurants-list li {
     width: 300px;
@@ -440,7 +435,7 @@ nav h1 a {
     font-size: 13pt;
   }
   #restaurants-list li {
-    height: 520px;
+    min-height: 440px;
   }
   #restaurants-list li h1 {
     font-size: 16pt;
@@ -506,6 +501,17 @@ nav h1 a {
     width: 100%;
   }
 }
+@media screen and (max-width: 680px) {
+  #restaurants-list li {
+    margin: 15px 10px 10px;
+    padding: 0 20px 20px;
+  }
+}
+@media screen and (max-width: 640px) {
+  #restaurants-list li {
+    width: 260px;
+  }
+}
 @media screen and (max-width: 560px) {
   nav {
     height: 60px;
@@ -513,11 +519,14 @@ nav h1 a {
   nav h1 a {
     font-size: 13pt;
   }
+  #restaurants-list li {
+    width: 350px;
+  }
   #breadcrumb {
     padding: 5px 40px 10px;
   }
   #breadcrumb li {
-    font-size: 8pt;
+    font-size: 10pt;
   }
   #restaurant-container {
     grid-template-areas: 
@@ -543,19 +552,20 @@ nav h1 a {
   #restaurants-list .restaurant-img {
     margin: 0 auto;
   }
+  #restaurants-list li {
+    width: 300px;
+  }
   #restaurants-list li h1 {
     width: 80%;
     margin: 20px auto 0;
     text-align: center;
-
   }
   #restaurants-list p {
     text-align: center;
   }
   #restaurants-list li a {
     font-size: 11pt;
-    display: block;
-    width: 40%;
+    width: 60%;
     margin: 20px auto 0;
   }
   /* Restaurant Info page */
