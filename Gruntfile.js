@@ -31,13 +31,19 @@ module.exports = function(grunt) {
     },
 
     imagemin: {
-      dynamic: {
-        files: [{
-          expand: true,
-          cwd: 'img/',
-          src: ['**/*.jpg'],
-          dest: 'img/'
-        }]
+      jpeg: {
+        options: {
+          progressive: true
+        },
+        files: [
+          {
+            expand: true,
+            cwd: 'img/',
+            src: ['*.jpg'],
+            dest: 'img/',
+            ext: '.jpg'
+          }
+        ]
       }
     }
     
