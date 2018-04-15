@@ -29,6 +29,17 @@ module.exports = function(grunt) {
       }
      
     },
+
+    imagemin: {
+      dynamic: {
+        files: [{
+          expand: true,
+          cwd: 'img/',
+          src: ['**/*.jpg'],
+          dest: 'img/'
+        }]
+      }
+    }
     
   })
 
@@ -36,7 +47,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-image-resize');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-imagemin');
 
 // Register tasks
-  grunt.registerTask('resize', ['clean','image_resize','copy','clean']);
+  grunt.registerTask('resize', ['clean','image_resize','copy','clean','imagemin']);
 }
