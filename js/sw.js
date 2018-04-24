@@ -1,6 +1,6 @@
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').then(registration => {
+    navigator.serviceWorker.register('js/sw.js').then(registration => {
       // Registration was successful
       console.log('ServiceWorker registration successful with scope: ', registration.scope);
     }, err => {
@@ -18,8 +18,7 @@ self.addEventListener('install', event => {
           '/img',
           '/css/styles.css',
           '/js/dbhelper.js',
-          '/js/main.js',
-          '/data/restaurants.json'
+          '/js/main.js'
         ]
       );
     })
