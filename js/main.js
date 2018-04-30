@@ -128,6 +128,7 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
   const ul = document.getElementById('restaurants-list');
   restaurants.forEach(restaurant => {
     ul.append(createRestaurantHTML(restaurant));
+    DBHelper.addToCache(restaurant);
   });
   addMarkersToMap();
 }
@@ -164,9 +165,9 @@ createRestaurantHTML = (restaurant) => {
   more.innerHTML = 'View Details';
   more.setAttribute('aria-label', `View details about ${restaurant.name}`);
   more.href = DBHelper.urlForRestaurant(restaurant);
-  li.append(more)
+  li.append(more);
 
-  return li
+  return li;
 }
 
 /**
