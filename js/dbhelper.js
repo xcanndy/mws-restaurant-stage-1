@@ -16,16 +16,36 @@ class DBHelper {
    * Fetch all restaurants.
    */
   static fetchRestaurants(callback) {
-    fetch(DBHelper.DATABASE_URL)
-    .then(response => {
-      if(response.ok) {
-        return response.json();
-      }  
-    })
-    .then(result => {
-      const restaurants = result;
+    if((idb.open('mws-db', 1)
+        .then(db => {
+          return db.objectStore;
+        })) == 'restaurants'
+    ) {
+      restaurants = DBHelper.fetchFromCache();
       callback(null, restaurants);
-    });
+    }
+    else {
+
+      idb.delete('mws-db');
+      console.log('No Database');
+      fetch(DBHelper.DATABASE_URL)
+      .then(response => {
+        if(response.ok) {
+          return response.json();
+        }  
+      })
+      .then(result => {
+        const restaurants = result;
+        for(let i = 0; i < restaurants.length; i++) {
+           DBHelper.addToCache(restaurants[i]);
+        }
+        callback(null, restaurants);
+      });
+
+
+    }
+
+    
   }
 
   /**
@@ -197,5 +217,17 @@ class DBHelper {
         });
         return tx.complete;
     });
+  }
+
+  static fetchFromCache() {
+    idb.open('mws-db', 1, (upgradeDB) => {
+      switch (upgradeDB.oldVersion) {
+        case 0: 
+          upgradeDB.createObjectStore('restaurants', {keyPath: 'id'});
+      }
+    }).then(db => {
+      return db.transaction('restaurants')
+      .objectStore('restaurants').getAll();
+    }).then(allObjs => {return allObjs;});
   }
 }
