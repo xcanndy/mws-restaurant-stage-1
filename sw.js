@@ -15,7 +15,7 @@ self.addEventListener('install', event => {
     caches.open('cache-mws').then(cache => {
       return cache.addAll(
         [
-          '/img',
+          '/img/',
           '/css/styles.css',
           '/js/dbhelper.js',
           '/js/main.js'

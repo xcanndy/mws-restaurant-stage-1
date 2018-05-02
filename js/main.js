@@ -128,7 +128,6 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
   const ul = document.getElementById('restaurants-list');
   restaurants.forEach(restaurant => {
     ul.append(createRestaurantHTML(restaurant));
-    DBHelper.addToCache(restaurant);
   });
   addMarkersToMap();
 }
