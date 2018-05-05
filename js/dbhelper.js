@@ -45,9 +45,6 @@ class DBHelper {
         } else {
           callback(error, null);
         }
-        
-        
-        //callback(error, null);
       } else {
         const restaurant = restaurants.find(r => r.id == id);
         if (restaurant) { // Got the restaurant
