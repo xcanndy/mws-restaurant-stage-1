@@ -16,18 +16,6 @@ class DBHelper {
    * Fetch all restaurants.
    */
   static fetchRestaurants(callback) {
-    if((idb.open('mws-db', 1)
-        .then(db => {
-          return db.objectStore;
-        })) == 'restaurants'
-    ) {
-      restaurants = DBHelper.fetchFromCache();
-      callback(null, restaurants);
-    }
-    else {
-
-      idb.delete('mws-db');
-      console.log('No Database');
       fetch(DBHelper.DATABASE_URL)
       .then(response => {
         if(response.ok) {
@@ -41,11 +29,6 @@ class DBHelper {
         }
         callback(null, restaurants);
       });
-
-
-    }
-
-    
   }
 
   /**
@@ -55,7 +38,16 @@ class DBHelper {
     // fetch all restaurants with proper error handling.
     DBHelper.fetchRestaurants((error, restaurants) => {
       if (error) {
-        callback(error, null);
+        if(DBHelper.fetchFromCache != undefined || null) {
+          restaurants = DBHelper.fetchFromCache();
+          const restaurant =  restaurants.find(r => r.id == id);
+          callback(null, restaurant);
+        } else {
+          callback(error, null);
+        }
+        
+        
+        //callback(error, null);
       } else {
         const restaurant = restaurants.find(r => r.id == id);
         if (restaurant) { // Got the restaurant
@@ -228,6 +220,6 @@ class DBHelper {
     }).then(db => {
       return db.transaction('restaurants')
       .objectStore('restaurants').getAll();
-    }).then(allObjs => {return allObjs;});
+    }).then(objects => {return objects;});
   }
 }
