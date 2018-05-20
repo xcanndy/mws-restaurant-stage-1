@@ -20,6 +20,8 @@ class DBHelper {
       .then(response => {
         if(response.ok) {
           return response.json();
+        } else {
+          return DBHelper.fetchFromCache();
         }  
       })
       .then(result => {
@@ -187,10 +189,7 @@ class DBHelper {
 
   static addToCache(restaurant) {
     idb.open('mws-db', 1, (upgradeDB) => {
-        switch (upgradeDB.oldVersion) {
-          case 0: 
-            upgradeDB.createObjectStore('restaurants', {keyPath: 'id'});
-        }
+      upgradeDB.createObjectStore('restaurants', {keyPath: 'id'});
     }).then(db => {
         const tx = db.transaction('restaurants', 'readwrite');
         tx.objectStore('restaurants').put({

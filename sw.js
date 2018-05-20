@@ -15,10 +15,14 @@ self.addEventListener('install', event => {
     caches.open('cache-mws').then(cache => {
       return cache.addAll(
         [
+          '/',
+          '/restaurant.html',
           '/img/',
           '/css/styles.css',
           '/js/dbhelper.js',
-          '/js/main.js'
+          '/js/main.js',
+          '/js/idb.js',
+          'sw.js'
         ]
       );
     })
@@ -30,7 +34,7 @@ self.addEventListener('fetch', event => {
     caches.open('cache-mws').then(cache => {
       return cache.match(event.request).then(response => {
         return response || fetch(event.request).then(response => {
-          cache.put(event.request, response.clone());
+          // cache.put(event.request, response.clone());
             return response;
         });
       });
