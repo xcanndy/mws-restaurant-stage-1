@@ -164,28 +164,28 @@ class DBHelper {
     return (`/img/restaurants/${restaurant.photograph}.jpg`);
   }
 
-  /**
-   * Map marker for a restaurant.
-   */
-  static mapMarkerForRestaurant(restaurant, map) {
-    const marker = new google.maps.Marker({
-      position: restaurant.latlng,
-      title: restaurant.name,
-      url: DBHelper.urlForRestaurant(restaurant),
-      map: map,
-      animation: google.maps.Animation.DROP}
-    );
-    return marker;
-  }
+  // /**
+  //  * Map marker for a restaurant.
+  //  */
+  // static mapMarkerForRestaurant(restaurant, map) {
+  //   const marker = new google.maps.Marker({
+  //     position: restaurant.latlng,
+  //     title: restaurant.name,
+  //     url: DBHelper.urlForRestaurant(restaurant),
+  //     map: map,
+  //     animation: google.maps.Animation.DROP}
+  //   );
+  //   return marker;
+  // }
 
-  /**
-   * Remove map's elements from tab order
-   */
-  static removeMapsTabOrder() {
-    document.querySelectorAll('#map div, #map iframe, #map area, #map a, #map button').forEach((item) => {
-      item.setAttribute('tabindex', '-1');
-    });
-  }
+  // /**
+  //  * Remove map's elements from tab order
+  //  */
+  // static removeMapsTabOrder() {
+  //   document.querySelectorAll('#map div, #map iframe, #map area, #map a, #map button').forEach((item) => {
+  //     item.setAttribute('tabindex', '-1');
+  //   });
+  // }
 
   static addToCache(restaurant) {
     idb.open('mws-db', 1, (upgradeDB) => {

@@ -65,23 +65,25 @@ fillCuisinesHTML = (cuisines = self.cuisines) => {
     option.value = cuisine;
     select.append(option);
   });
+
+  updateRestaurants();
 }
 
 /**
  * Initialize Google map, called from HTML.
  */
-window.initMap = () => {
-  let loc = {
-    lat: 40.722216,
-    lng: -73.987501
-  };
-  self.map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 12,
-    center: loc,
-    scrollwheel: false
-  });
-  updateRestaurants();
-}
+// window.initMap = () => {
+//   let loc = {
+//     lat: 40.722216,
+//     lng: -73.987501
+//   };
+//   self.map = new google.maps.Map(document.getElementById('map'), {
+//     zoom: 12,
+//     center: loc,
+//     scrollwheel: false
+//   });
+//   updateRestaurants();
+// }
 
 /**
  * Update page and map for current restaurants.
@@ -129,7 +131,7 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
   restaurants.forEach(restaurant => {
     ul.append(createRestaurantHTML(restaurant));
   });
-  addMarkersToMap();
+  // addMarkersToMap();
 }
 
 /**
@@ -169,23 +171,23 @@ createRestaurantHTML = (restaurant) => {
   return li;
 }
 
-/**
- * Add markers for current restaurants to the map.
- */
-addMarkersToMap = (restaurants = self.restaurants) => {
-  restaurants.forEach(restaurant => {
-    // Add marker to the map
-    const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.map);
-    google.maps.event.addListener(marker, 'click', () => {
-      window.location.href = marker.url
-    });
-    self.markers.push(marker);
-  });
-}
+// /**
+//  * Add markers for current restaurants to the map.
+//  */
+// addMarkersToMap = (restaurants = self.restaurants) => {
+//   restaurants.forEach(restaurant => {
+//     // Add marker to the map
+//     const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.map);
+//     google.maps.event.addListener(marker, 'click', () => {
+//       window.location.href = marker.url
+//     });
+//     self.markers.push(marker);
+//   });
+// }
 
-window.setTimeout(() => {
-  document.querySelectorAll('#map iframe').forEach((item) => {
-    item.setAttribute('title', 'Google maps iframe');
-  });
-  DBHelper.removeMapsTabOrder();
-}, 1000);
+// window.setTimeout(() => {
+//   document.querySelectorAll('#map iframe').forEach((item) => {
+//     item.setAttribute('title', 'Google maps iframe');
+//   });
+//   DBHelper.removeMapsTabOrder();
+// }, 1000);
