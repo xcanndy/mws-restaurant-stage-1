@@ -322,6 +322,34 @@ nav h1 a {
   box-sizing: border-box;
   width: 100%;
 }
+#reviews-container #reviews-add form {
+  display: grid;
+  grid-template-areas:
+    "name-header"
+    "name"
+    "review-header"
+    "review"
+    "submit"; 
+}
+#reviews-add form h4 {
+  margin-bottom: 10px;
+}
+#reviews-add form input[type="text"] {
+  grid-area: name;
+  width: 50%;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+#reviews-add form textarea {
+  resize: none;
+  height: 180px;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+#reviews-add form button {
+  width: 30%;
+  margin-bottom: 15px;
+}
 #restaurant-container {
   grid-area: restaurant;
   display: grid;
