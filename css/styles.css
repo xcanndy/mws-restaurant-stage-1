@@ -325,30 +325,45 @@ nav h1 a {
 #reviews-container #reviews-add form {
   display: grid;
   grid-template-areas:
-    "name-header"
-    "name"
-    "review-header"
-    "review"
-    "submit"; 
+    "name-header rate-header"
+    "name rate"
+    "review-header review-header"
+    "review review"
+    "submit submit"; 
 }
 #reviews-add form h4 {
   margin-bottom: 10px;
 }
 #reviews-add form input[type="text"] {
   grid-area: name;
-  width: 50%;
+  width: 80%;
   margin-bottom: 10px;
   padding: 5px;
+  font-size: 10pt;
+  height: 40px;
+  box-sizing: border-box;
+}
+#reviews-add form select {
+  grid-area: rate;
+  height: 40px;
 }
 #reviews-add form textarea {
+  grid-area: review;
   resize: none;
   height: 180px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   padding: 5px;
+  font-size: 10pt;
 }
 #reviews-add form button {
+  grid-area: submit;
   width: 30%;
   margin-bottom: 15px;
+  background-color: #685053;
+  color: #ffffff;
+  padding: 8px 30px 10px;
+  font-size: 10pt;
+  border: none;
 }
 #restaurant-container {
   grid-area: restaurant;

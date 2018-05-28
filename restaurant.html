@@ -74,9 +74,17 @@
         <h2>Add your review:</h3>
         <form>
           <label for="name"><h4>Name:</h4></label>
-          <input id="name" name="name" type="text">
+          <input id="name" name="name" type="text" placeholder="Your name..." required>
+          <label for="rate"><h4>Rate:</h4></label>
+          <select name="rate" id="rate">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
           <label for="review"><h4>Review:</h4></label>
-          <textarea id="review" name="review"></textarea>
+          <textarea id="review" name="review" placeholder="Your review..." required></textarea>
           <button type="submit" value="Submit">Submit</button>
         </form>
       </div>
