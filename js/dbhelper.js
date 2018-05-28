@@ -9,14 +9,14 @@ class DBHelper {
    */
   static get DATABASE_URL() {
     const port = 1337 // Change this to your server port
-    return `http://localhost:${port}/restaurants`;
+    return `http://localhost:${port}`;
   }
 
   /**
    * Fetch all restaurants.
    */
   static fetchRestaurants(callback) {
-      fetch(DBHelper.DATABASE_URL)
+      fetch(`${DBHelper.DATABASE_URL}/restaurants`)
       .then(response => {
         if(response.ok) {
           return response.json();
@@ -218,4 +218,21 @@ class DBHelper {
       .objectStore('restaurants').getAll();
     }).then(objects => {return objects;});
   }
+
+  static fetchReviewsByRestaurantId(restaurant) {
+    fetch(`${DBHelper.DATABASE_URL}/reviews/?restaurant_id=${restaurant.id}`)
+      .then(response => {
+        if(response.ok) {
+          return response.json();
+        } else {
+          console.log("Cannot get reviews");
+        }
+      })
+      .then(result => {
+        const reviews = result;
+        return reviews;
+      });
+  }
 }
+
+  
