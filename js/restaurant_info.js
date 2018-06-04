@@ -4,21 +4,31 @@ var map;
 /**
  * Initialize Google map, called from HTML.
  */
-window.initMap = () => {
+// window.initMap = () => {
+//   fetchRestaurantFromURL((error, restaurant) => {
+//     if (error) { // Got an error!
+//       console.error(error);
+//     } else {
+//       // self.map = new google.maps.Map(document.getElementById('map'), {
+//       //   zoom: 16,
+//       //   center: restaurant.latlng,
+//       //   scrollwheel: false
+//       // });
+//       fillBreadcrumb();
+//       // DBHelper.mapMarkerForRestaurant(self.restaurant, self.map);
+//     }
+//   });
+// }
+
+document.addEventListener('DOMContentLoaded', (event) => {
   fetchRestaurantFromURL((error, restaurant) => {
-    if (error) { // Got an error!
-      console.error(error);
+    if (error) {
+      console.log(error);
     } else {
-      // self.map = new google.maps.Map(document.getElementById('map'), {
-      //   zoom: 16,
-      //   center: restaurant.latlng,
-      //   scrollwheel: false
-      // });
       fillBreadcrumb();
-      // DBHelper.mapMarkerForRestaurant(self.restaurant, self.map);
     }
-  });
-}
+  })
+});
 
 /**
  * Get current restaurant from page URL.
@@ -105,8 +115,8 @@ fillReviewsHTML = (restaurant = self.restaurant) => {
   const title = document.createElement('h2');
   title.innerHTML = 'Reviews';
   container.appendChild(title);
-  reviews = DBHelper.fetchReviewsByRestaurantId(restaurant);
-  console.log(reviews);
+  const reviews = DBHelper.fetchReviewsByRestaurantId(restaurant);
+  console.log(`fillReviewsHTML (const reviews) returns: ${reviews}`)
 
   if (!reviews) {
     const noReviews = document.createElement('p');
@@ -115,9 +125,13 @@ fillReviewsHTML = (restaurant = self.restaurant) => {
     return;
   }
   const ul = document.getElementById('reviews-list');
-  reviews.forEach(review => {
+  reviews.map(review => {
+    console.log(review);
     ul.appendChild(createReviewHTML(review));
   });
+  // reviews.forEach(review => {
+  //   ul.appendChild(createReviewHTML(review));
+  // });
   container.appendChild(ul);
 }
 

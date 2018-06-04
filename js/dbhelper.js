@@ -229,9 +229,11 @@ class DBHelper {
         }
       })
       .then(result => {
-        const reviews = result;
+        const reviews = result; 
+        console.log(`DBHelper.fetchReviewsByRestaurantId returns: ${reviews} 
+        (array of reviews)`);
         return reviews;
-      });
+      }).catch(err => console.log(err));
   }
 }
 
