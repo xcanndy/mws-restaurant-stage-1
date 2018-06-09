@@ -1,54 +1,63 @@
-# Mobile Web Specialist Certification Course
+# Restaurant Review App
 
-#### _Restaurant Reviews Project Stage 1_
+This app  is created as part of the Udacity Nanodegree "Mobile Web Specialist". The project is divided into three stages.
 
----
+![Screenshot](Screenshot.png)
 
-### Project Overview:
+#### Stage 1 focuses on 
 
-##### 1. Responsive Design
-- responsive content (media queries)
-- responsive images (srcset, sizes)
+- accessibility
+- responsiveness
+- offline first
 
-##### 2. Accessibility
-- ARIA roles
-- navigation using tab
-- alternate text
+#### Stage 2 focuses on
 
-##### 3. Offline Availability
-- availability offline (service worker)
-- IndexedDB
+- performance
+- accessibility
+- offline first with IDB
 
-##### 4. Site Performance (Based on Lighthouse)
- - Progressive Web Apps:  >90
-- Performance: >70
-- Accessibility: >90
-  
 
-### How to run?
+#### Stage 3 focuses on 
 
-  
+- POST requests with offline-first approach
+- a form to submit data
+- performance ([Lighthouse](https://developers.google.com/web/tools/lighthouse/) performance >90)
 
-##### Option 1 ( _Python_ )
+## Features
 
-In a terminal, check the version of Python you have: `python -V`. If you have **Python 2.x**, spin up the server with `python -m SimpleHTTPServer 8000` (or some other port, if port 8000 is already in use.) For Python 3.x, you can use `python3 -m http.server 8000`. If you don’t have Python installed, navigate to Python’s website to download and install the software.
+- View all restaurants
+- View restaurants for a specific district or cuisine
+- View details to a restaurant like opening hours and reviews
+- Write reviews for a restaurant
+- Mark a restaurant as favorite
+- View already loaded pages also in offline mode
+- Accessibility: Use the app with screen reader or keyboard-only
 
-With your server running, visit the site: __http://localhost:8000__
+## Installation and run locally
 
-##### Option 2 ( _VSCode_ )
+1. First this repository.
+2. Clone this repository to your desktop.
+3. Open the root folder of the repository in a terminal
+4. Run `npm i`
+5. Check your python version by `python -V`
+6. Start local server:
+	- For Python 2.x: `python -m SimpleHTTPServer 8000`
+	- For Python 3.x: `python3 -m http.server 8000`
+7. Provide data from node server (see below)
+8. Visit [http://localhost:8000](http://localhost:8000)
 
-Install extension Live Server in your VSCode editor using Extensions (**__Ctrl+Shift+X__**). Reload editor. Open your project, find icon **_Go Live_** and click it. Browser should open your page, but if not visit __localhost:5500__ in your browser.
+## Data from node server
 
-#### Development local API Server
-Server depends on [node.js LTS Version: v6.11.2](https://nodejs.org/en/download/) , [npm](https://www.npmjs.com/get-npm), and [sails.js](http://sailsjs.com/) Please make sure you have these installed before proceeding forward.
+```
+$ git clone https://github.com/udacity/mws-restaurant-stage-3.git
+$ cd mws-restaurant-stage-3
+$ npm i
+$ npm i sails -g
+$ node server
+```
 
-_Location of server = /server/_
+**This server must be up and running parallel to the Python server.**
 
-##### Install project dependancies
-    npm i
-##### Install Sails.js globally
-    npm i sails -g
-##### Start the server
-	node server
+## Licence
 
-You have access to your server at localhost:1337
+The contents of this repository are covered under the [MIT License](https://github.com/udacity/ud777-writing-readmes/blob/master/LICENSE).

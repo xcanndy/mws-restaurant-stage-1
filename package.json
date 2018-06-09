@@ -1,24 +1,16 @@
 {
-  "name": "udacity-mws-restaurant-reviews",
+  "name": "mws-restaurant-stage",
   "version": "1.0.0",
-  "description": "---\r #### _Udacity Certification Three Stage Course Material Project - Restaurant Reviews_",
-  "main": "index.js",
-  "scripts": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/xcanndy/udacity-mws-restaurant-reviews.git"
+  "description": "restaurant Review App",
+  "main": "",
+  "scripts": {
+    "start": "python3 -m http.server 8000"
   },
-  "author": "xcanndy",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/xcanndy/udacity-mws-restaurant-reviews/issues"
-  },
-  "homepage": "https://github.com/xcanndy/udacity-mws-restaurant-reviews#readme",
-  "devDependencies": {
-    "grunt": "^1.0.2",
-    "grunt-contrib-clean": "^1.1.0",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-imagemin": "^2.0.1",
-    "grunt-image-resize": "^1.0.0"
+  "author": "",
+  "license": "",
+  "private": true,
+  "devDependencies": {},
+  "dependencies": {
+    "idb": "^2.1.0"
   }
 }

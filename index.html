@@ -2,74 +2,58 @@
 <html lang="en">
 
 <head>
-  <!-- Normalize.css for better cross-browser consistency -->
-  <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
-  <!-- Main CSS file -->
-  <link rel="stylesheet" href="css/styles.css">
-  <!-- Manifest -->
-  <link rel="manifest" href="manifest.json">
-  <!-- Page icons -->
-  <link rel="icon" sizes="192x192" href="img/manifest_icons/icon-192.png">
-  <link rel="icon" sizes="168x168" href="img/manifest_icons/icon-168.png">
-  <link rel="icon" sizes="144x144" href="img/manifest_icons/icon-144.png">
-  <link rel="icon" sizes="96x96" href="img/manifest_icons/icon-96.png">
-  <link rel="icon" sizes="72x72" href="img/manifest_icons/icon-72.png">
-  <link rel="icon" sizes="48x48" href="img/manifest_icons/icon-48.png">
-  <!-- Theme color -->
-  <meta name="theme-color" content="#215E4F">
-  <!-- Viewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Description -->
-  <meta name="description" content="Restaurant Reviews project from Udacity Mobile Web Specialist Nanodegree">
-  <!-- Title -->
+  <meta name="theme-color" content="#333" />
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
+  <link rel="stylesheet" href="css/styles.css" type="text/css">
+  <link rel="stylesheet" href="css/styles_index.css" type="text/css">
   <title>Restaurant Reviews</title>
 </head>
 
 <body>
   <header>
     <nav>
-      <h1><a href="/">Restaurant Reviews</a></h1>
+      <h1>
+        <a href="/">Restaurant Reviews</a>
+      </h1>
     </nav>
   </header>
 
-  <main id="maincontent">
+  <main id="maincontent" role="main">
     <section id="map-container">
-      <a id="map" role="img" target="_blank" href="https://www.google.com/maps/place/New+York,+NY,+USA/@40.7091256,-73.9658279,12.86z/data=!4m5!3m4!1s0x89c24fa5d33f083b:0xc80b8f06e177fe62!8m2!3d40.7127753!4d-74.0059728?hl=en">
-        <img alt="Map" src="https://maps.googleapis.com/maps/api/staticmap?center=40.714728,-73.998672&zoom=12&size=1000x500&format=jpg-baseline&markers=color:orange%7Clabel:1%7C40.713829,-73.989667&
-        markers=color:orange%7Clabel:2%7C40.683555,-73.966393&
-        markers=color:orange%7Clabel:3%7C40.747143,-73.985414&
-        markers=color:orange%7Clabel:4%7C40.722216,-73.987501&
-        markers=color:orange%7Clabel:5%7C40.705089,-73.933585&
-        markers=color:orange%7Clabel:6%7C40.674925,-74.016162&
-        markers=color:orange%7Clabel:7%7C40.727397,-73.983645&
-        markers=color:orange%7Clabel:8%7C40.726584,-74.002082&
-        markers=color:orange%7Clabel:9%7C40.743797,-73.950652&
-        markers=color:orange%7Clabel:10%7C40.743394,-73.954235"/>
-      </a>
+      <div id="map" role="application" aria-hidden="true" aria-describedby="map-help"></div>
+      <div hidden id="map-help">A map that shows all filtered restaurants</div>
     </section>
-    <section id="filters">
+    <section>
       <div class="filter-options">
-        <h2>Filter Results</h2>
-        <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()" aria-label="Neighbourhood filter">
-          <option selected="selected" value="all">All Neighborhoods</option>
+        <select id="neighborhoods-select" aria-label="Select neighborhoods" name="neighborhoods" onchange="updateRestaurants()">
+          <option value="all">All Neighborhoods</option>
         </select>
-        <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()" aria-label="Cuisine filter">
+        <select id="cuisines-select" aria-label="Select cuisines" name="cuisines" onchange="updateRestaurants()">
           <option value="all">All Cuisines</option>
         </select>
       </div>
-      <ul id="restaurants-list"></ul>
+    </section>
+    <section class="container">
+      <div class="col">
+        <h2>Filter Results</h2>
+        <ul id="restaurants-list"></ul>
+      </div>
     </section>
   </main>
 
-  <script type="application/javascript" charset="utf-8" src="js/idb.js"></script>
   <script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
   <script type="application/javascript" charset="utf-8" src="js/main.js"></script>
-  <script type="application/javascript" charset="utf-8" src="sw.js"></script>
-  <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap"></script> -->
-
+  <script type="application/javascript" charset="utf-8" src="node_modules/idb/lib/idb.js"></script>
+  <script type="application/javascript" charset="utf-8" src="js/sw_registration.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap"></script>
 
   <footer id="footer">
-    Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
+    Copyright (c) 2018
+    <a href="/">
+      <strong>Restaurant Reviews</strong>
+    </a> All Rights Reserved.
   </footer>
 
 </body>

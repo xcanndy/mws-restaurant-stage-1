@@ -2,26 +2,13 @@
 <html lang="en">
 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#333" />
+  <link rel="manifest" href="manifest.json">
   <!-- Normalize.css for better cross-browser consistency -->
   <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
-  <!-- Main CSS file -->
   <link rel="stylesheet" href="css/styles.css" type="text/css">
-  <!-- Manifest -->
-  <link rel="manifest" href="manifest.json">
-  <!-- Page icons -->
-  <link rel="icon" sizes="192x192" href="img/manifest_icons/icon-192.png">
-  <link rel="icon" sizes="168x168" href="img/manifest_icons/icon-168.png">
-  <link rel="icon" sizes="144x144" href="img/manifest_icons/icon-144.png">
-  <link rel="icon" sizes="96x96" href="img/manifest_icons/icon-96.png">
-  <link rel="icon" sizes="72x72" href="img/manifest_icons/icon-72.png">
-  <link rel="icon" sizes="48x48" href="img/manifest_icons/icon-48.png">
-  <!-- Theme color -->
-  <meta name="theme-color" content="#215E4F">
-  <!-- Viewport -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Description -->
-  <meta name="description" content="Restaurant Reviews project from Udacity Mobile Web Specialist Nanodegree">
-  <!-- Title -->
+  <link rel="stylesheet" href="css/styles_restaurant_info.css" type="text/css">
   <title>Restaurant Info</title>
 </head>
 
@@ -29,12 +16,16 @@
   <!-- Beginning header -->
   <header>
     <!-- Beginning nav -->
-    <nav>
-      <h1><a href="/">Restaurant Reviews</a></h1>
+    <nav role="navigation">
+      <h1>
+        <a href="/">Restaurant Reviews</a>
+      </h1>
     </nav>
     <!-- Beginning breadcrumb -->
-    <ul id="breadcrumb" role="navigation">
-      <li><a href="/" aria-label="Go back to main page">Home</a></li>
+    <ul id="breadcrumb" aria-label="Breadcrumb">
+      <li>
+        <a href="/">Home</a>
+      </li>
     </ul>
     <!-- End breadcrumb -->
     <!-- End nav -->
@@ -42,26 +33,20 @@
   <!-- End header -->
 
   <!-- Beginning main -->
-  <main id="maincontent">
+  <main id="maincontent" role="main">
     <!-- Beginning map -->
     <section id="map-container">
-      <div id="map" role="img">
-        <img alt="Map" src="https://maps.googleapis.com/maps/api/staticmap?center=40.714728,-73.998672&zoom=12&size=1000x500&format=jpg-baseline&markers=color:orange%7Clabel:1%7C40.713829,-73.989667&
-        markers=color:orange%7Clabel:2%7C40.683555,-73.966393&
-        markers=color:orange%7Clabel:3%7C40.747143,-73.985414&
-        markers=color:orange%7Clabel:4%7C40.722216,-73.987501&
-        markers=color:orange%7Clabel:5%7C40.705089,-73.933585&
-        markers=color:orange%7Clabel:6%7C40.674925,-74.016162&
-        markers=color:orange%7Clabel:7%7C40.727397,-73.983645&
-        markers=color:orange%7Clabel:8%7C40.726584,-74.002082&
-        markers=color:orange%7Clabel:9%7C40.743797,-73.950652&
-        markers=color:orange%7Clabel:10%7C40.743394,-73.954235"/>
-      </div>
+      <div id="map" role="application" aria-hidden="true" aria-describedby="map-help"></div>
+      <div hidden id="map-help">A map that shows the restaurant location</div>
     </section>
     <!-- End map -->
     <!-- Beginning restaurant -->
     <section id="restaurant-container">
       <h2 id="restaurant-name"></h2>
+      <p>
+        <input type="checkbox" id="favCheck">
+        <label for="favCheck">Favorite</label>
+      </p>
       <img id="restaurant-img">
       <p id="restaurant-cuisine"></p>
       <p id="restaurant-address"></p>
@@ -71,6 +56,30 @@
     <!-- Beginning reviews -->
     <section id="reviews-container">
       <ul id="reviews-list"></ul>
+      <form id="reviewForm">
+        <p>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" placeholder="Your Name" required/>
+        </p>
+        <p>&nbsp;</p>
+        <p>
+          <label for="rating">Rating</label>
+          <select name="rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3" selected>3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </p>
+        <p>
+          <!-- <label for="reviewText">Review text:</label> -->
+          <textarea rows="4" name="comments" placeholder="Write your review here" required></textarea>
+        </p>
+        <p>
+          <input type="submit" value="Submit Review">
+        </p>
+      </form>
     </section>
     <!-- End reviews -->
   </main>
@@ -78,21 +87,24 @@
 
   <!-- Beginning footer -->
   <footer id="footer">
-    Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
+    Copyright (c) 2018
+    <a href="/">
+      <strong>Restaurant Reviews</strong>
+    </a> All Rights Reserved.
   </footer>
   <!-- End footer -->
 
   <!-- Beginning scripts -->
-  <!-- idb lib file -->
-  <script type="application/javascript" charset="utf-8" src="js/idb.js"></script>
   <!-- Database helpers -->
   <script type="text/javascript" src="js/dbhelper.js"></script>
   <!-- Main javascript file -->
   <script type="text/javascript" src="js/restaurant_info.js"></script>
-  <!-- Service worker file -->
-  <script type="application/javascript" charset="utf-8" src="sw.js"></script>
+  <!-- IndexedDB Promised -->
+  <script type="application/javascript" charset="utf-8" src="node_modules/idb/lib/idb.js"></script>
+  <!-- ServiceWorker Registration -->
+  <script type="application/javascript" charset="utf-8" src="js/sw_registration.js"></script>
   <!-- Google Maps -->
-  <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap"></script> -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap"></script>
   <!-- End scripts -->
 
 </body>
