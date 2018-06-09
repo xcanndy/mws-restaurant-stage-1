@@ -1,10 +1,10 @@
 # Restaurant Review App
 
-This app  is created as part of the Udacity Nanodegree "Mobile Web Specialist". The project is divided into three stages.
+This app is created as part of the Udacity Nanodegree "Mobile Web Specialist". The project is divided into three stages.
 
 ![Screenshot](Screenshot.png)
 
-#### Stage 1 focuses on 
+#### Stage 1 focuses on
 
 - accessibility
 - responsiveness
@@ -16,8 +16,7 @@ This app  is created as part of the Udacity Nanodegree "Mobile Web Specialist". 
 - accessibility
 - offline first with IDB
 
-
-#### Stage 3 focuses on 
+#### Stage 3 focuses on
 
 - POST requests with offline-first approach
 - a form to submit data
@@ -35,22 +34,21 @@ This app  is created as part of the Udacity Nanodegree "Mobile Web Specialist". 
 
 ## Installation and run locally
 
-1. First this repository.
-2. Clone this repository to your desktop.
-3. Open the root folder of the repository in a terminal
-4. Run `npm i`
-5. Check your python version by `python -V`
-6. Start local server:
-	- For Python 2.x: `python -m SimpleHTTPServer 8000`
-	- For Python 3.x: `python3 -m http.server 8000`
-7. Provide data from node server (see below)
-8. Visit [http://localhost:8000](http://localhost:8000)
+1.  First this repository.
+2.  Clone this repository to your desktop.
+3.  Open the root folder of the repository in a terminal
+4.  Run `npm i`
+5.  Check your python version by `python -V`
+6.  Start local server:
+    - For Python 2.x: `python -m SimpleHTTPServer 8000`
+    - For Python 3.x: `python3 -m http.server 8000`
+7.  Provide data from node server (see below)
+8.  Visit [http://localhost:8000](http://localhost:8000)
 
 ## Data from node server
 
 ```
-$ git clone https://github.com/udacity/mws-restaurant-stage-3.git
-$ cd mws-restaurant-stage-3
+Open console  in /server/
 $ npm i
 $ npm i sails -g
 $ node server
